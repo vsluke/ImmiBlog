@@ -1,0 +1,12 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"name": "immi-app",
+			"path": "../_tmp/GitCloneImmi-App/immi-app"
+		}
+	],
+	"settings": {}
+}

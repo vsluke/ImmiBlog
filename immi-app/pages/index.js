@@ -10,13 +10,14 @@ import { getBlogPage } from '@/src/contentful';
 const inter = Inter({ subsets: ['latin'] });
 
 function Home(props) {
+  console.log(props);
   return (
     <>
       <main>
         <Typography variant="h1" component={'h1'}>
           Hello World
         </Typography>
-        <BlogCover title={'Hello!!!'} description={'Description???'} />
+        <BlogCover {...props} />
       </main>
     </>
   );
@@ -28,6 +29,6 @@ export async function getServerSideProps() {
   const blogPage = await getBlogPage('homePage');
   console.log(blogPage);
   return {
-    props: { ...blogPage },
+    props: { ...blogPage.fields },
   };
 }

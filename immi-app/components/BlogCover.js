@@ -13,5 +13,9 @@ export const BlogCover = ({ title, description, coverImage }) => (
     <Typography component={'h4'} variant={'h4'}>
       {description}
     </Typography>
+    <src
+      alt={coverImage.fields.description}
+      src={`https:${coverImage.fields.file.url}&q=80&h=590&w=433`}
+    />
   </>
 );

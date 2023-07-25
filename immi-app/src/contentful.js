@@ -9,7 +9,7 @@ const client = contentful.createClient({
 
 export function getBlogPage(slug) {
   return client
-    .getEntries({ 'Fields.slug': slug, content_type: 'homePage' })
-    .then((resp) => rest.items)
+    .getEntries({ 'fields.slug': slug, content_type: 'homePage' })
+    .then((resp) => resp.items[0])
     .catch((err) => console.log(err));
 }
