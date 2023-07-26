@@ -5,30 +5,30 @@ import styles from '@/styles/Home.module.css';
 import { Typography, Button } from '@mui/material';
 import Link from 'next/link';
 import { BlogCover } from '../components/BlogCover.js';
-import { getBlogPage } from '@/src/contentful';
+import { getBlogPages } from '@/src/contentful';
 
 const inter = Inter({ subsets: ['latin'] });
 
-function Home(props) {
-  console.log(props);
+function Home({ blogs }) {
   return (
-    <>
-      <main>
-        <Typography variant="h1" component={'h1'}>
-          Hello World
-        </Typography>
-        <BlogCover {...props} />
-      </main>
-    </>
+    <main>
+      <Typography variant="h1" component={'h1'}>
+        Hello World
+      </Typography>
+
+      {blogs &&
+        blogs.map((blog) => {
+          <BlogCover {...blog.fields} />;
+        })}
+    </main>
   );
 }
 
 export default Home;
 
 export async function getServerSideProps() {
-  const blogPage = await getBlogPage('homePage');
-  console.log(blogPage);
+  const blogPages = await getBlogPages();
   return {
-    props: { ...blogPage.fields },
+    props: { blogs: blogPages },
   };
 }

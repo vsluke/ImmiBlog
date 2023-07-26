@@ -13,3 +13,9 @@ export function getBlogPage(slug) {
     .then((resp) => resp.items[0])
     .catch((err) => console.log(err));
 }
+export function getBlogPages() {
+  return client
+    .getEntries({ content_type: 'homePage' })
+    .then((resp) => resp.items)
+    .catch((err) => console.log(err));
+}
