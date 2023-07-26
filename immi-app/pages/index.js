@@ -15,7 +15,6 @@ function Home({ blogs }) {
       <Typography variant="h1" component={'h1'}>
         Hello World
       </Typography>
-
       {blogs &&
         blogs.map((blog) => {
           <BlogCover {...blog.fields} />;
