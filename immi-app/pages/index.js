@@ -1,33 +1,21 @@
-import Head from 'next/head';
-import Image from 'next/image';
-import { Inter } from 'next/font/google';
-import styles from '@/styles/Home.module.css';
-import { Typography, Button } from '@mui/material';
+import { Button, Typography } from '@mui/material';
+import { Box } from '@mui/system';
 import Link from 'next/link';
-import { BlogCover } from '../components/BlogCover.js';
-import { getBlogPages } from '@/src/contentful';
 
-const inter = Inter({ subsets: ['latin'] });
-
-function Home({ blogs }) {
+function Home() {
   return (
-    <main>
-      <Typography variant="h1" component={'h1'}>
-        Hello World
+    <Box textAlign={'center'}>
+      <Typography component={'h1'} variant={'h1'}>
+        Today you learn
       </Typography>
-      {blogs &&
-        blogs.map((blog) => {
-          <BlogCover {...blog.fields} />;
-        })}
-    </main>
+      <Typography component={'h2'} variant={'h2'}>
+        Enter the world of IT today
+      </Typography>
+      <Link href="/blog" passHref>
+        <Button variant="contained">Enter Blog</Button>
+      </Link>
+    </Box>
   );
 }
 
 export default Home;
-
-export async function getServerSideProps() {
-  const blogPages = await getBlogPages();
-  return {
-    props: { blogs: blogPages },
-  };
-}
